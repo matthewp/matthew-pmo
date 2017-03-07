@@ -1,7 +1,23 @@
 language: node_js
 node_js: node
-addons:
-  firefox: "51.0"
 before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+  - 'export DISPLAY=:99.0'
+  - sh -e /etc/init.d/xvfb start
+before_deploy:
+  - git config --global user.email "me@example.com"
+  - git config --global user.name "PMO deploy bot"
+  - node build
+  - git add dist/ --force
+  - git commit -m "Updating build."
+  - node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+deploy:
+  skip_cleanup: true
+  provider: heroku
+  app: hidden-lake-67957
+  api_key:
+    - secure: >-
+        OPoY4ofOqRbJV/yThrUF8/JG7LL7yIt7oKtb+/6MZ6CtT7leNWkyCEIP48sArTkeoEd0/WnpTMaUrGL7DXPznmpvq73DGkmvvsR3cIjevOCE4AMUUx0F0LJgTsf8z1gPezsqeatsfd2F928soa9NjE+Hy0CrsAYANkD5duem9MxJYejldrzGL+9JtqfZWqRZFi4MO7TC9jPOItVnVXId/rwlQGobERlON6P/37Eq16V8LMTUHXh+WSWsNQzpsKpZ5zNXCANTDFx5eaJX1WOCSng2tvkHBN2RZ7ceQaVS9ygwVikpt+C7NoORNyV1VdkN8np67vc9UwoA/TfLBSCUFxhnsC+6XCQ5fyHxShHbxtJ05cDSc4EW2VyYynhwFn5b+lmzGkjwT1eDTquo7+EeObO3LlsyPnBVyziYTllVr82TG2pwnXIvCbXoIjNzL5S05g0s4zDZb0g2jpN6G5dRBMJvuj9n6Vb74jdlerUfFRKO2jTfENzENSI5TGFYkN2+goPt+TdkQ6nunmkyzgjXjU9j14KuMTR4jRouJoVV8HhHLMik5UPU9bTmWOnUJezmIA+6yTLDOHHpMka8nadKTMZOON7M7BWteVxzNKRJJgpIYI1VIACOEkckRKq9nZka3COaT3o7VaqIj4n5TY+FSiofiQ9nlOth2nI8FFD1iz0=
+env:
+  global:
+    - secure: >-
+        nJ0g81fspqbVXlTtf5j/qiVPHDkgrYoD0hcx5+w5z55IZ3gJiCjSkQcFYhmSBk2+H4dyEs2WaGk2cgLT59baJtOgL4I9n/GIDoxnLEc5WQ5V0JbX0tYszOrTbinQMbWM/2eZ7hYWKiSNEKAnDoJXAo5Nvvzun5GqfPOrER/e4HxHlnzblcPmgpbIKB+jvmO+vsLBPTBBZE33sg8w+SqyN3ebN0qDAJtViNYP/qp/zksA1CakzEcnTojAYUToza9YARiDTDLr0A98zd1VPL1jlxmPZ8xktjSCd8PRZogC5ghs3LLdv2Jb1cc5lebjAiEwPZ76OaJAft6TpGY77DWH0oVQtkyeLFBzwGTsvOFa3vZsyQFPGsO2WxlXRkd4Kl4Gr3sUG2dIx9gUPu4uawvVfPJfSBv6Cf6FaZD7FAicvABEnuItHbmddL8RuVbUk4EAWUAPv06zkDrh6vgzlZc+tj6//yKpNx29DsI4XA/7Dg9bTuxAjtK8T1Ku88HjagNj3/yKj9qyh1VkWHX2pabdqV5RMEWaLj35liLxlyK9pAsLskIfWnlOnYQYbb6ZQYq1NsX1X2xv5N2yRW8OXfhb3QavvIeks911gH5+1KT1rcsjAITbIAti4KPmKhYkrs4MKvCRBMb/oX49u/GtblKEJGZVtDft+mqfQu3nZvUW4QY=
