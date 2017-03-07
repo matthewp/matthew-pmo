@@ -19,9 +19,12 @@
     "test": "testee test.html --browsers firefox --reporter Spec",
     "start": "done-serve --proxy http://localhost:7070 --port 8080",
     "develop": "done-serve --develop --proxy http://localhost:7070 --port 8080",
-    "build": "node build"
+    "build": "node build",
+    "document": "documentjs",
+    "deploy": "firebase deploy",
+    "deploy:ci": "firebase deploy --token \"$FIREBASE_TOKEN\""
   },
-  "main": "place-my-order/index.stache!done-autorender",
+  "main": "electron-main.js",
   "files": [
     "src"
   ],
@@ -43,12 +46,19 @@
     ],
     "envs": {
       "server-production": {
-        "renderingBaseURL": "/dist"
+        "renderingBaseURL": "https://pmo-matt-awesome.firebaseapp.com/"
+      },
+      "cordova-production": {
+        "serviceBaseURL": "http://www.place-my-order.com"
+      },
+      "electron-production": {
+        "serviceBaseURL": "http://www.place-my-order.com"
       }
     },
     "serviceBaseURL": ""
   },
   "dependencies": {
+    "bit-tabs": "^1.0.0-alpha.0",
     "can-component": "^3.0.4",
     "can-connect": "^1.0.21",
     "can-define": "^1.0.10",
@@ -67,14 +77,20 @@
     "place-my-order-assets": "^0.1.7",
     "steal": "^1.0.5",
     "steal-less": "^1.0.2",
+    "steal-socket.io": "^4.0.9",
     "steal-stache": "^3.0.4"
   },
   "devDependencies": {
+    "can-fixture": "^1.0.11",
+    "documentjs": "^0.4.4",
     "donejs-cli": "^1.0.0-alpha.2",
+    "electron": "^1.6.1",
+    "firebase-tools": "^3.4.0",
     "funcunit": "^3.1.0",
+    "steal-cordova": "^1.0.0-alpha.0",
+    "steal-electron": "^1.1.1",
     "steal-qunit": "^1.0.0",
     "steal-tools": "^1.0.1",
-    "testee": "^0.3.0",
-    "can-fixture": "^1.0.11"
+    "testee": "^0.3.0"
   }
 }

@@ -5,5 +5,23 @@
       "authorEmail": "",
       "authorUrl": ""
     }
+  },
+  "donejs-cordova": {
+    "name": "place my order",
+    "id": "com.donejs.placemyorder",
+    "platforms": [
+      "ios"
+    ],
+    "baseURL": "http://www.place-my-order.com"
+  },
+  "donejs-electron": {
+    "main": "electron-main.js",
+    "platforms": [
+      "darwin"
+    ],
+    "archs": [
+      "x64"
+    ],
+    "baseURL": "http://www.place-my-order.com"
   }
 }

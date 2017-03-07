@@ -4,4 +4,6 @@ import 'place-my-order/models/fixtures/states';
 
 import 'place-my-order/models/fixtures/cities';
 
+import 'place-my-order/models/fixtures/orders';
+
 // Main file that loads all model fixtures

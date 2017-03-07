@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "firebase": "pmo-matt-awesome",
+    "public": "./dist",
+    "headers": [
+      {
+        "source": "/**",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ]
+  }
+}

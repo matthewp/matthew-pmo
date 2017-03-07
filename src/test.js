@@ -3,6 +3,8 @@ import QUnit from 'steal-qunit';
 
 import 'place-my-order/restaurant/list/list-test';
 
+import 'place-my-order/order/new/new-test';
+
 F.attach(QUnit);
 
 QUnit.module('place-my-order functional smoke test', {
